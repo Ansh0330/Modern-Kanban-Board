@@ -23,7 +23,7 @@ No special prerequisites are needed. This application runs in any modern web bro
 
 1. Clone this repository or download the source files
    ```
-   git clone https://github.com/ansh0330/modern-kanban-board.git
+   git clone https://github.com/ansh0330/Modern-Kanban-Board.git
    ```
 
 2. Open `index.html` in your preferred web browser
