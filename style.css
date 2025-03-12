@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Dark theme with purple accents */
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --column-gradient: linear-gradient(160deg, #1e293b 0%, #0f172a 100%);
+  --card-gradient: linear-gradient(135deg, #334155 0%, #293548 100%);
+  --primary: #a855f7; /* Purple */
+  --primary-dark: #9333ea;
+  --accent: #2dd4bf; /* Teal */
+  --text-light: #e2e8f0;
+  --text-dark: #e2e8f0;
+  --card-text: #f8fafc;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  --border-radius: 12px;
+  --card-radius: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Column-specific colors */
+  --todo-color: #ec4899; /* Pink */
+  --doing-color: #eab308; /* Yellow */
+  --done-color: #22c55e; /* Green */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-gradient);
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  color: var(--text-light);
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 30px 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -1px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 100px);
+  padding: 20px 0;
+}
+
+.board {
+  display: flex;
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.column {
+  background: var(--column-gradient);
+  width: 100%;
+  min-height: 500px;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 35px -8px rgba(0, 0, 0, 0.4);
+}
+
+.column h2 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Column-specific header colors */
+#todo h2 {
+  color: var(--todo-color);
+}
+
+#doing h2 {
+  color: var(--doing-color);
+}
+
+#done h2 {
+  color: var(--done-color);
+}
+
+.column h2 span {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Column-specific count badge colors */
+#todo h2 span {
+  background-color: rgba(236, 72, 153, 0.2);
+}
+
+#doing h2 span {
+  background-color: rgba(234, 179, 8, 0.2);
+}
+
+#done h2 span {
+  background-color: rgba(34, 197, 94, 0.2);
+}
+
+.tasks {
+  min-height: 400px;
+  padding: 10px 0;
+  margin-bottom: 15px;
+}
+
+.task-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-top: 10px;
+  color: var(--text-light);
+  font-family: 'Montserrat', sans-serif;
+  transition: var(--transition);
+}
+
+.task-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3);
+}
+
+.add-task {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--card-radius);
+  border: none;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 10px;
+}
+
+/* Column-specific button colors */
+#todo .add-task {
+  background: var(--todo-color);
+}
+
+#doing .add-task {
+  background: var(--doing-color);
+}
+
+#done .add-task {
+  background: var(--done-color);
+}
+
+.add-task:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(110%);
+}
+
+.card {
+  background: var(--card-gradient);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: var(--card-radius);
+  color: var(--card-text);
+  cursor: grab;
+  transition: var(--transition);
+  position: relative;
+  max-width: 100%;
+  box-shadow: var(--shadow-sm);
+  transform-origin: center center;
+}
+
+/* Column-specific card accents */
+#todo-tasks .card {
+  box-shadow: inset 4px 0 0 var(--todo-color), var(--shadow-sm);
+}
+
+#doing-tasks .card {
+  box-shadow: inset 4px 0 0 var(--doing-color), var(--shadow-sm);
+}
+
+#done-tasks .card {
+  box-shadow: inset 4px 0 0 var(--done-color), var(--shadow-sm);
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-md);
+}
+
+/* Update hover box-shadow to include column colors */
+#todo-tasks .card:hover {
+  box-shadow: inset 4px 0 0 var(--todo-color), var(--shadow-md);
+}
+
+#doing-tasks .card:hover {
+  box-shadow: inset 4px 0 0 var(--doing-color), var(--shadow-md);
+}
+
+#done-tasks .card:hover {
+  box-shadow: inset 4px 0 0 var(--done-color), var(--shadow-md);
+}
+
+.card.dragging {
+  opacity: 0.8;
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+}
+
+.task-text {
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  overflow-wrap: break-word;
+}
+
+.time {
+  text-align: right;
+  display: block;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(226, 232, 240, 0.6);
+  margin-top: 6px;
+}
+
+.context-menu {
+  background-color: #1e293b;
+  padding: 8px 0;
+  border-radius: var(--card-radius);
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 150px;
+}
+
+.context-menu ul {
+  list-style: none;
+}
+
+.context-menu ul li {
+  padding: 10px 20px;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.context-menu ul li:hover {
+  background-color: rgba(168, 85, 247, 0.2);
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Add animations to tasks being added */
+.card {
+  animation: slideIn 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .board {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .column {
+    width: 90%;
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+}

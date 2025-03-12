@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Kanban Board</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="A modern Kanban board with smooth animations and transitions" />
+  </head>
+  <body>
+    <h1>Kanban Board</h1>
+    <div class="container">
+      <div class="board">
+        <!-- Todo column -->
+        <div class="column" id="todo">
+          <h2>To Do <span id="todo-count">0</span></h2>
+          <div class="tasks" id="todo-tasks"></div>
+          <input
+            type="text"
+            class="task-input"
+            id="todo-input"
+            placeholder="Add a new task..."
+          />
+          <button class="add-task" onclick="addTask('todo')">Add Task</button>
+        </div>
+
+        <!-- Doing column  -->
+        <div class="column" id="doing">
+          <h2>In Progress <span id="doing-count">0</span></h2>
+          <div class="tasks" id="doing-tasks"></div>
+          <input
+            type="text"
+            class="task-input"
+            id="doing-input"
+            placeholder="Add a new task..."
+          />
+          <button class="add-task" onclick="addTask('doing')">Add Task</button>
+        </div>
+
+        <!-- done column  -->
+        <div class="column" id="done">
+          <h2>Completed <span id="done-count">0</span></h2>
+          <div class="tasks" id="done-tasks"></div>
+          <input
+            type="text"
+            class="task-input"
+            id="done-input"
+            placeholder="Add a new task..."
+          />
+          <button class="add-task" onclick="addTask('done')">Add Task</button>
+        </div>
+      </div>
+
+      <div class="context-menu">
+        <ul>
+          <li onclick="editTask()">Edit Task</li>
+          <li onclick="deleteTask()">Delete Task</li>
+        </ul>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
